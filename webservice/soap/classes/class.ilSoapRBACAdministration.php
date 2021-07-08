@@ -95,13 +95,13 @@ class ilSoapRBACAdministration extends ilSoapAdministration
         $rbacreview = $DIC['rbacreview'];
         $ilAccess = $DIC['ilAccess'];
 
-        if ($tmp_user =&ilObjectFactory::getInstanceByObjId($user_id) and $tmp_user->getType() != 'usr') {
+        if ($tmp_user =&ilObjectFactory::getInstanceByObjId($user_id, false) and $tmp_user->getType() != 'usr') {
             return $this->__raiseError(
                 'No valid user id given. Please choose an existing id of an ILIAS user',
                 'Client'
             );
         }
-        if ($tmp_role =&ilObjectFactory::getInstanceByObjId($role_id) and $tmp_role->getType() != 'role') {
+        if ($tmp_role =&ilObjectFactory::getInstanceByObjId($role_id, false) and $tmp_role->getType() != 'role') {
             return $this->__raiseError(
                 'No valid role id given. Please choose an existing id of an ILIAS role',
                 'Client'
